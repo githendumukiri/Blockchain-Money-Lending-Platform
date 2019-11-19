@@ -39,38 +39,47 @@ class Block:
 
 class Blockchain:
 
-                diff = 20
+    diff = 20
 
-                maxNonce = 2 **32
+    maxNonce = 2 **32
 
-                target = 2 ** (256-diff)
+    target = 2 ** (256-diff)
 
-                block = Block("Genesis")
+    block = Block("Genesis")
 
-                head = block
+    head = block
 
-                def __add__(self, block):
-                        block.previous_hash = self.block.hash()
+    def __add__(self, block):
+        block.previous_hash = self.block.hash()
 
-                        block.blockNo = self.block.blockNo + 1
+        block.blockNo = self.block.blockNo + 1
 
-                        self.block.next = block
-                        self.block = self.block.next
+        self.block.next = block
 
-                        def mine(self,block):
-                            for n in range(self.maxNonce):
-                                if int(block.hash(),16) <= self.target:
-                                    self.add(block)
-                                    print(block)
-                                    break
-                                else:
-                                    block.nonce += 1
+        self.block = self.block.next
+
+    def mine(self, block):
+        # from 0 to 2^32
+        for n in range(self.maxNonce):
+            # is the value of the given block's hash less than our target value?
+            if int(block.hash(), 16) <= self.target:
+                # if it is,
+                # add the block to the chain
+                self.add(block)
+                print(block)
+                break
+            else:
+                block.nonce += 1
+
+
 
 blockchain = Blockchain()
+
+# mine 10 blocks
 for n in range(10):
-    blockchain.mine(Block("BlocK"+str(n+1)))
+    blockchain.mine(Block("Block " + str(n + 1)))
 
-
+# print out each block in the blockchain
 while blockchain.head != None:
     print(blockchain.head)
     blockchain.head = blockchain.head.next
