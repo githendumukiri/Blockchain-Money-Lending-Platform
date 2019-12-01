@@ -1,12 +1,17 @@
+from random import randint
+
+
 class AccountProfile:
 
-        def __init__(self):
-                self.firstname = "temp"
+        numberOfAccounts = 0
 
-        def __init__(self,firstname,lastname,investment):
+        def __init__(self,firstname,lastname,balance):
                 self.firstname = firstname
                 self.lastname = lastname
-                self.investment = investment
+                self.balance = balance
+                self.accountNumber = randint(0, 10) + randint(randint(30, 40), randint(500, 1000)) + AccountProfile.numberOfAccounts
+                AccountProfile.numberOfAccounts+=1
+
 
         def getUsername(self):
                 firstname_cut = self.firstname[0:1]
@@ -14,17 +19,16 @@ class AccountProfile:
 
 
 
-        def getInvestment(self):
-                return  self.investment
+        def getBalance(self):
+                return  self.balance
 
-        def setInvestment(self,new_investment):
+        def setBalance(self,new_investment):
                 self.investment = new_investment
 
+        def TransactionTag(self,new_transcationID):
+                tag = "000" + self.accountNumber.__str__() + "0" +  new_transcationID.__str__()
+                return tag
 
-accnt1= AccountProfile("Emmanuel","Chalumeau",3000)
 
-print(accnt1.getUsername())
-print(accnt1.getInvestment())
-accnt1.setInvestment(400)
-print(accnt1.getInvestment())
+
 
