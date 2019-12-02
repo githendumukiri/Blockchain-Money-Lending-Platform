@@ -1,8 +1,10 @@
 class Account:
-    #initialize the account class
-    def __init__(self, username):
-        self._account_number = 0
-        self._balance = 0
+    # initialize the account class with field variables: username, deposit
+    def __init__(self, username, deposit):
+        # convert username to int * a random number
+        self._account_number = int(username)
+        # set balance equal to initial deposit
+        self._balance = deposit
 
     def set_account_number(self, account_number):
         self._account_number = account_number
