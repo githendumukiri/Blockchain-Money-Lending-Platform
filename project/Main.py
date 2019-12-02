@@ -6,7 +6,7 @@ class Main:
 
         #need to setup while loops for the exit and return
         print("Welcome to Wenmo")
-        print("Hey User 1! Let's get started, please follow the instructions bellow - ")
+        print("Hello User 1! Let's get started, please follow the instructions bellow - ")
 
         user1_firstname = raw_input("Enter a firstname:")
         user1_lastname = raw_input("Enter a lastname:")
@@ -15,7 +15,7 @@ class Main:
         user1 = Account.AccountProfile(user1_firstname,user1_lastname,user1_investment)
         print(user1.getUsername())
 
-        print("Hey User 2! Let's get started, please follow the instructions bellow - ")
+        print("Hello User 2! Let's get started, please follow the instructions bellow - ")
         user2_firstname = raw_input("Enter a firstname:")
         user2_lastname = raw_input("Enter a lastname:")
         user2_investment = raw_input("Investment:")
