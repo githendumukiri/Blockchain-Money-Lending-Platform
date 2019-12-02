@@ -12,7 +12,7 @@ class Main:
         user1_lastname = raw_input("Enter a lastname:")
         user1_investment = raw_input("Investment:")
 
-        user1 = Account.Account(user1_firstname,user1_lastname,user1_investment)
+        user1 = Account.Account(user1_firstname)
         print(user1.getUsername())
 
         print("Hello User 2! Let's get started, please follow the instructions bellow - ")
