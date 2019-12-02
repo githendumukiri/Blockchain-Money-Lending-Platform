@@ -3,8 +3,14 @@ class Account:
         self._account_number = 0
         self._balance = 0
 
-    def account_number(self):
+    def set_account_number(self, account_number):
+        self._account_number = account_number
+
+    def get_account_number(self):
         return self._account_number
 
-    def get_account_number(self, account_number):
-        pass
+    def set_balance(self, balance):
+        self._balance = balance
+
+    def get_balance(self):
+        return self._balance
