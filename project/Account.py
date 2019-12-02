@@ -1,4 +1,4 @@
-class AccountProfile:
+class Account:
     #initialize the account class
     def __init__(self, username):
         self._account_number = 0
