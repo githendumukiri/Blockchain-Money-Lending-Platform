@@ -1,34 +1,17 @@
-from random import randint
+class Account:
+    #initialize the account class
+    def __init__(self, username):
+        self._account_number = 0
+        self._balance = 0
 
+    def set_account_number(self, account_number):
+        self._account_number = account_number
 
-class AccountProfile:
+    def get_account_number(self):
+        return self._account_number
 
-        numberOfAccounts = 0
+    def set_balance(self, balance):
+        self._balance = balance
 
-        def __init__(self,firstname,lastname,balance):
-                self.firstname = firstname
-                self.lastname = lastname
-                self.balance = balance
-                self.accountNumber = randint(0, 10) + randint(randint(30, 40), randint(500, 1000)) + AccountProfile.numberOfAccounts
-                AccountProfile.numberOfAccounts+=1
-
-
-        def getUsername(self):
-                firstname_cut = self.firstname[0:1]
-                return firstname_cut + self.lastname
-
-
-
-        def getBalance(self):
-                return  self.balance
-
-        def setBalance(self,new_investment):
-                self.investment = new_investment
-
-        def TransactionTag(self,new_transcationID):
-                tag = "000" + self.accountNumber.__str__() + "0" +  new_transcationID.__str__()
-                return tag
-
-
-
-
+    def get_balance(self):
+        return self._balance

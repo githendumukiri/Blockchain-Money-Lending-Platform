@@ -3,7 +3,6 @@ import datetime
 #contains hashing algorithms
 import hashlib
 
-
 # defining the 'block' data structure
 class Block:
     # each block has 7 attributes
