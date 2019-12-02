@@ -1,6 +1,6 @@
-#generates timestamps
+# generates timestamps
 import datetime
-#contains hashing algorithms
+# contains hashing algorithms
 import hashlib
 
 # defining the 'block' data structure
@@ -52,7 +52,7 @@ class Block:
         # returns a hexademical string
         return h.hexdigest()
 
-        ## SHOW DEMO 2, change data
+        # SHOW DEMO 2, change data
 
     def __str__(self):
         # print out the value of a block
@@ -112,11 +112,11 @@ class Blockchain:
             else:
                 block.nonce += 1
 
-    ## Show demo 3 ! Mine a block
+    # Show demo 3 ! Mine a block
 
 blockchain = Blockchain()
-
 # mine 10 blocks
+
 for n in range(10):
     blockchain.mine(Block("Block " + str(n + 1)))
 
