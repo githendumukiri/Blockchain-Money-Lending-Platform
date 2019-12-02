@@ -7,6 +7,7 @@ class Main:
         #need to setup while loops for the exit and return
         print("Welcome to Wenmo")
         print("Hey User 1! Let's get started, please follow the instructions bellow - ")
+
         user1_firstname = raw_input("Enter a firstname:")
         user1_lastname = raw_input("Enter a lastname:")
         user1_investment = raw_input("Investment:")
