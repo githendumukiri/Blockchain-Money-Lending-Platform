@@ -3,13 +3,21 @@ from pip._vendor.distlib.compat import raw_input
 from project import Account
 
 
-class Main:
-    print("Welcome to Wenmo")
-    print("Hello User  1! Let's get started, please follow the instructions bellow - ")
 
-    user1_firstname = raw_input("Enter a firstname:")
-    user1_lastname = raw_input("Enter a lastname:")
-    user1_username = user1_firstname + user1_lastname
+class Main(object):
+
+
+    def makeusername(self,first_name,last_name):
+        return first_name[0,1] + last_name
+
+
+
+    print("Welcome to Wenmo")
+
+    user1_firstname = raw_input("Enter a firstname: ")
+    user1_lastname = raw_input("Enter a lastname: ")
+
+    user1_username = makeusername(user1_firstname, user1_lastname)
 
     user1_investment = raw_input("Enter your initial deposit:")
 
