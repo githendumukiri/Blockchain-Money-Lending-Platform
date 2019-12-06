@@ -9,7 +9,7 @@ class Account:
         self._account_number = account_number
 
     def makeusername(self):
-        return self.firstname[0,1] + self.lastname
+        return self.firstname[0,1] + "_"+ self.lastname
 
     def get_account_number(self):
         return self._account_number
