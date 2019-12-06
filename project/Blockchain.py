@@ -3,8 +3,12 @@ import datetime
 # contains hashing algorithms
 import hashlib
 
+
 # defining the 'block' data structure
-class Block:
+from project.Transaction import Transaction
+
+
+class Block(Transaction):
     # each block has 7 attributes
 
     # 1 number of the block
