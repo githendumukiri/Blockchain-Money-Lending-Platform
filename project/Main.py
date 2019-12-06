@@ -1,13 +1,16 @@
-# import user input function
 from pip._vendor.distlib.compat import raw_input
 
 from project import Account
 
 
+
 class Main(object):
 
+
     def makeusername(self,first_name,last_name):
-        return first_name[0,1] + last_name[0,1]
+        return first_name[0,1] + last_name
+
+
 
     print("Welcome to Wenmo")
 
