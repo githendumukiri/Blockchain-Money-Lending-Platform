@@ -2,26 +2,52 @@ from pip._vendor.distlib.compat import raw_input
 
 from project import Account
 
+#Helps set the username, and any other method helpers
+class ExtraTools:
+    def __init__(self):
+            pass
 
+    def getmakeaccountnumber(self,username):
+        accountnum_set = []
+        accountNum = ""
+        for i in username:
+            accountnum_set.append(str(ord(i)))
 
-class Main():
-    accounts = []
-    print("Welcome to Wenmo")
+        return accountNum.join(accountnum_set)
+#Main class where everything will be done.
+class Main:
+    done_session = False
+    UseExtraTools = ExtraTools()
 
-    user1_firstname = raw_input("Enter a firstname: ")
-    user1_lastname = raw_input("Enter a lastname: ")
-    user1_investment = raw_input("Enter your initial deposit: ")
+    print("Welcome to New Vision Banking")
+    #Holds all the accounts
+    Accounts = []
+    addAccount = True
+    #Takes in users per session on a while loop
+    while addAccount:
+        askSystem = raw_input("Add a user [Y/N]? ")
+        if askSystem == "N":
+                addAccount = False
+        else:
+            print("Perfect! Follow the instructions below")
+            currentUser_firstname = raw_input("Enter a firstname: ")
+            currentUser_lastname = raw_input("Enter a lastname: ")
+            currentUser_passcode = raw_input("Enter a 10 character passcode: ")
+            while len(currentUser_passcode) != 10:
+                currentUser_passcode = raw_input("Please try again: ENTER A 10 CHARACTER PASSCODE: ")
+            currentUser_investment = raw_input("Enter your initial deposit: ")
+            currentUserName = currentUser_firstname + currentUser_lastname
+            currentUser = Account.Account(UseExtraTools.getmakeaccountnumber(currentUserName),currentUser_passcode ,currentUser_investment)
+            Accounts.append(currentUser)
 
-    user1 = Account.Account(user1_firstname, user1_lastname,user1_investment)
-    accounts.append(user1)
-    print("Hello User 2! Let's get started, please follow the instructions bellow - ")
-    user2_firstname = raw_input("Enter a firstname: ")
-    user2_lastname = raw_input("Enter a lastname: ")
-    user2_investment = raw_input("Enter your initial deposit: ")
+    print("Current users in this session:")
+    for x in range(0,Accounts.__len__()):
+        print(str(x) + ": " + str(Accounts.__getitem__(x).get_account_number()))
 
-    user2 = Account.Account(user2_firstname,user1_lastname, user2_investment)
-    accounts.append(user2)
+    
+    while done_session != True:
+        print("Which user are you?")
+        for i in Accounts:
+            print(i)
 
-    for x in range(0,accounts.__len__()):
-        print(accounts.__getitem__(x).makeusername())
 
