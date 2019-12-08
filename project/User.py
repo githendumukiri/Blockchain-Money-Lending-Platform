@@ -6,7 +6,8 @@ class User(ReceivingAccount,SendingAccount):
         self.username = username
         self.passcode = passcode
         self.balace = startingBalance
-
+        ReceivingAccount.__init__(self,startingBalance)
+        SendingAccount.__init__(self, startingBalance)
 
 
     def checkPassCode(self, thispasscode):
@@ -14,3 +15,4 @@ class User(ReceivingAccount,SendingAccount):
                 print("Welcome! What would you like to do today!")
             else:
                 print("You have entered the wrong code, please try again later")
+

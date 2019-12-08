@@ -1,7 +1,6 @@
 from pip._vendor.distlib.compat import raw_input
-
-from project import Account
-
+from project import User
+from project import Transactions
 #Helps set the username, and any other method helpers
 class ExtraTools:
     def __init__(self):
@@ -21,7 +20,8 @@ class Main:
 
     print("Welcome to New Vision Banking")
     #Holds all the accounts
-    Accounts = []
+
+    Users = []
     addAccount = True
     #Takes in users per session on a while loop
     while addAccount:
@@ -37,17 +37,17 @@ class Main:
                 currentUser_passcode = raw_input("Please try again: ENTER A 10 CHARACTER PASSCODE: ")
             currentUser_investment = raw_input("Enter your initial deposit: ")
             currentUserName = currentUser_firstname + currentUser_lastname
-            currentUser = Account.Account(UseExtraTools.getmakeaccountnumber(currentUserName),currentUser_passcode ,currentUser_investment)
-            Accounts.append(currentUser)
+            currentUser = User.User(UseExtraTools.getmakeaccountnumber(currentUserName),currentUser_passcode ,currentUser_investment)
+            Users.append(currentUser)
 
     print("Current users in this session:")
-    for x in range(0,Accounts.__len__()):
-        print(str(x) + ": " + str(Accounts.__getitem__(x).get_account_number()))
+    for x in range(0,Users.__len__()):
+        print(str(x) + ": " + str(Users.__getitem__(x).get_account_number()))
 
     
     while done_session != True:
         print("Which user are you?")
-        for i in Accounts:
+        for i in Users:
             print(i)
 
 
