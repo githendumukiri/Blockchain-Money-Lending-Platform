@@ -116,7 +116,7 @@ class Main:
                 print(transactionChain.head)
                 transactionChain.head = transactionChain.head.next
             #Runs through/displays Request Chain
-
             SystemExit
+
         else:
             session_satus = False

@@ -26,7 +26,7 @@ class User:
             return self.yournumberinline
     #Returns 1 if balance is good, returns 0 if there would an overdraft
     def checkBalance(self,ammount):
-        if int(ammount) < self.balace:
+        if int(ammount) <= self.balace:
             return 1
         else:
             return 0
