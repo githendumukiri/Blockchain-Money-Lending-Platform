@@ -91,7 +91,7 @@ class TransactionChain:
 
     # generates the first block in the blockchain
     # this is called the 'genesis block'
-    transaction = Transaction("Genesis")
+    transaction = Transaction("Root")
     # sets it as the head of our blockchain
     head = transaction
 
