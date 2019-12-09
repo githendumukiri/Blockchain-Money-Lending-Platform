@@ -109,26 +109,17 @@ class Blockchain:
                 # if it is,
                 # add the block to the chain
                 self.add(block)
-                print(block)
                 break
             else:
                 block.nonce += 1
 
 
-# Static func, blockchain length
-def block_chain_len():
-    current_block = Blockchain()
-    block_length = 0
-    while current_block.head is not None:
-        block_length += 1
-    return block_length
+    # Static func, blockchain length
+    def block_chain_len():
+        current_block = Blockchain()
+        block_length = 0
+        while current_block.head is not None:
+            block_length += 1
+        return block_length
 
-# blockchain = Blockchain()
-# mine 10 blocks
-# for n in range(10):
-    # blockchain.mine(Block("Block " + str(n + 1)))
 
-# print out each block in the blockchain
-# while blockchain.head != None:
-   # print(blockchain.head)
-    # blockchain.head = blockchain.head.next

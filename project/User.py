@@ -1,18 +1,26 @@
-from project import ReceivingAccount, SendingAccount
+class User:
+    amountofusers = 0
 
-
-class User(ReceivingAccount, SendingAccount):
-
-    def __init__(self, username, passcode, starting_balance):
+    def __init__(self, username,starting_balance):
         self.username = username
-        self.passcode = passcode
         self.balace = starting_balance
-        ReceivingAccount.__init__(self, starting_balance)
-        SendingAccount.__init__(self, starting_balance)
+        User.amountofusers += 1
+        self.yournumberinline = User.amountofusers -1
 
-    def check_password(self, passcode):
-        if passcode == self.passcode:
-            print("Welcome! What would you like to do today!")
-        else:
-            print("You have entered the wrong code, please try again later")
+    def receivemoney(self,amount):
+        int_amount = int(amount)
+        self.balace += int_amount
 
+    def sendmoney(self,amount):
+        int_amount = int(amount)
+        self.balace -= int_amount
+        return int_amount
+
+    def getbalance(self):
+        return self.balace
+
+    def getaccountname(self):
+        return self.username
+
+    def getlinenumber(self):
+            return self.yournumberinline
