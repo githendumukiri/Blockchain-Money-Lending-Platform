@@ -5,10 +5,7 @@ import hashlib
 
 
 # defining the 'block' data structure
-from project.Transaction import Transaction
-
-
-class Block(Transaction):
+class Block:
     # each block has 7 attributes
 
     # 1 number of the block
@@ -68,6 +65,7 @@ class Block(Transaction):
 # consists of 'blocks' linked together
 # to form a 'chain'. Thats why its called
 # 'blockchain'
+
 class Blockchain:
     # mining difficulty
     diff = 20
@@ -115,20 +113,22 @@ class Blockchain:
                 break
             else:
                 block.nonce += 1
-    def blockChainLen(self):
-        currentBlock = Blockchain()
-        blockLength = 0
-        while currentBlock.head != None:
-            blockLength += 1
-        return blockLength
 
-blockchain = Blockchain()
+
+# Static func, blockchain length
+def block_chain_len():
+    current_block = Blockchain()
+    block_length = 0
+    while current_block.head is not None:
+        block_length += 1
+    return block_length
+
+# blockchain = Blockchain()
 # mine 10 blocks
-
-for n in range(10):
-    blockchain.mine(Block("Block " + str(n + 1)))
+# for n in range(10):
+    # blockchain.mine(Block("Block " + str(n + 1)))
 
 # print out each block in the blockchain
-while blockchain.head != None:
-    print(blockchain.head)
-    blockchain.head = blockchain.head.next
+# while blockchain.head != None:
+   # print(blockchain.head)
+    # blockchain.head = blockchain.head.next
