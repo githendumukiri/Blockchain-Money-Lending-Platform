@@ -115,8 +115,12 @@ class Blockchain:
                 break
             else:
                 block.nonce += 1
-
-    # Show demo 3 ! Mine a block
+    def blockChainLen(self):
+        currentBlock = Blockchain()
+        blockLength = 0
+        while currentBlock.head != None:
+            blockLength += 1
+        return blockLength
 
 blockchain = Blockchain()
 # mine 10 blocks
