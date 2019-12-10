@@ -1,6 +1,7 @@
 import hashlib
 import datetime
 
+
 class Transaction:
     # each block has 7 attributes
     # 1 number of the block
@@ -19,7 +20,7 @@ class Transaction:
     # 7 timestamp
     timestamp = datetime.datetime.now()
 
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.approved = 0
 
@@ -29,6 +30,7 @@ class Transaction:
         # if someone changes the hash of a block
         # every block that comes after it is changed
         # this helps make a blockchain immutable
+
     def hash(self):
         # SHA-256 is a hashing algorithm that
         # generates an almost-unique 256-bit signature that represents
@@ -44,11 +46,11 @@ class Transaction:
             str(self.previous_hash).encode('utf-8') +
             str(self.timestamp).encode('utf-8') +
             str(self.transactionNo).encode('utf-8')
-            )
+        )
         # returns a hexademical string
         return h.hexdigest()
 
-    def setapproval(self,status):
+    def setapproval(self, status):
         self.approved = status
 
     def getapproval(self):
@@ -59,26 +61,6 @@ class Transaction:
         return "Block Hash: " + str(self.hash()) + "\nBlockNo: " + str(self.transactionNo) + "\nBlock Data: " + str(
             self.data) + "\nHashes: " + str(self.nonce) + "\n--------------"
 
-
-    #def get_transaction_detail(self):
-
-        #print("Sending Account Number: " + str(self._sending_account.get_username()))
-        #print("Sending Account Debit: " + str(self._sending_account.get_debit_amount()))
-        #print("Sending Account Balance: " + str(self._sending_account.get_balance()))
-
-        #print("Receiving Account Number: " + str(self._receiving_account.get_username()))
-        #print("Receiving Account Credit: " + str(self._receiving_account.get_credit_amount()))
-        #print("Receiving Account Balance: " + str(self._receiving_account.get_balance()))
-
-    # data for the block-chain
-    #def transaction_detail(self):
-        #self._transaction_complete = True
-        #return ("Sending Account Number: " + str(self._sending_account.get_username()) +
-               # " Sending Account Debit: " + str(self._sending_account.get_debit_amount()) +
-               # " Sending Account Balance: " + str(self._sending_account.get_balance()) +
-               # " Receiving Account Number: " + str(self._receiving_account.get_username()) +
-               # " Receiving Account Credit: " + str(self._receiving_account.get_credit_amount()) +
-               # " Receiving Account Balance: " + str(self._receiving_account.get_balance()))
 
 class TransactionChain:
     # mining difficulty
@@ -129,9 +111,9 @@ class TransactionChain:
             else:
                 transaction.nonce += 1
 
-
-    def printStatus(self):
-        for i in range(0,TransactionChain.block_chain_len()):
+    @staticmethod
+    def print_status(self):
+        for i in range(0, TransactionChain.block_chain_len()):
             print(TransactionChain.head)
 
     @staticmethod
