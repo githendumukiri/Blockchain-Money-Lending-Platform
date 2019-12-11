@@ -26,7 +26,7 @@ class Main:
     # Creating the BlockChain
     transactionChain = Transactions.TransactionChain()
 
-    while session_satus == False:
+    while not session_satus :
         # Finding the sending user from array of users, we could use hashtable for O(1) lookup speed
         #sending_user = None
 
