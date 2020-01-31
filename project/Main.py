@@ -21,85 +21,85 @@ class Main:
     user2 = User.User(user2_username, int(user2_investment))
     accounts.append(user2)
     # False: if session is active True: session inactive
-    session_satus = False
+    session_status = False
 
     # Creating the BlockChain
     transactionChain = Transactions.TransactionChain()
 
-    while not session_satus:
+    while not session_status:
         # Finding the sending user from array of users, we could use hashtable for O(1) lookup speed
         # sending_user = None
 
         chosen_user = input("Please enter your username: ")
-        selectednumber = 0
-        selecteddstnumber = 0
+        selected_number = 0
+        selected_destination_number = 0
         for i in accounts:
-            if chosen_user == i.getaccountname():
-                selectednumber = i.getlinenumber()
+            if chosen_user == i.get_username():
+                selected_number = i.get_line_number()
 
-        chosen_dst = input("Who are you working with? ")
-        if chosen_user != chosen_dst:
+        chosen_destination = input("Who are you working with? ")
+        if chosen_user != chosen_destination:
             for i in accounts:
-                if chosen_dst == i.getaccountname():
-                    selecteddstnumber = i.getlinenumber()
+                if chosen_destination == i.get_username():
+                    selected_destination_number = i.get_line_number()
 
-        transactionselection = input("What would you like to do? Send[0] Request[1] ")
+        transaction_selection = input("What would you like to do? Send[0] Request[1] ")
         # Chose to send money
-        if transactionselection == "0":
+        if transaction_selection == "0":
             send_amount = input("How much do you want to send? [only enter NUMBERS] ")
             # Checks if input is a number
             if int(send_amount):
                 # Checks account balance
-                if accounts[selectednumber].checkBalance(send_amount) == 1:
+                if accounts[selected_number].check_balance(send_amount) == 1:
                     # Creates Transaction ID
-                    current_transactionid = str(accounts[selectednumber].getaccountname()) + str(send_amount) + str(
-                        accounts[selecteddstnumber].getaccountname())
+                    current_transaction_id = str(accounts[selected_number].get_username()) + str(send_amount) + str(
+                        accounts[selected_destination_number].get_username())
                     # Creates Transaction Block
-                    print(current_transactionid)
-                    transaction = Transactions.Transaction(str(current_transactionid))
+                    print(current_transaction_id)
+                    transaction = Transactions.Transaction(str(current_transaction_id))
                     print("Approval pending...")
                     # adds Block to Chain
                     transactionChain.mine(transaction)
                     # Checks if it has been added
-                    if transaction.getapproval() == 1:
+                    if transaction.get_approval() == 1:
                         print("Transaction as been approved!")
                         # Sends money
-                        accounts[selecteddstnumber].receivemoney(accounts[selectednumber].sendmoney(send_amount))
+                        accounts[selected_destination_number].receive_money(accounts[selected_number].send_money(send_amount))
                         # Update on the balances
                         for i in accounts:
-                            print(str(i.getaccountname()) + ": Balance = " + str(i.getbalance()))
+                            print(str(i.get_username()) + ": Balance = " + str(i.get_balance()))
                     else:
                         print("Your transaction was not approved!")
                 else:
                     print("Not enough money in your account!")
 
         # Chose to request money
-        elif transactionselection == "1":
+        elif transaction_selection == "1":
             request_amount = input("How much do you want to request ")
             # Checks if input is a number
             if int(request_amount):
                 # Checks for approval of other User
-                dst_approval = input(accounts[selecteddstnumber].getaccountname() + ", Do you agree? [Y/N]")
+                dst_approval = input(accounts[selected_destination_number].get_username() + ", Do you agree? [Y/N]")
                 # Clears Approvals
                 if dst_approval == "Y":
                     # Checks account balance
-                    if accounts[selecteddstnumber].checkBalance(request_amount) == 1:
+                    if accounts[selected_destination_number].check_balance(request_amount) == 1:
                         # Creates Transaction ID
-                        current_transactionid = str(accounts[selectednumber].getaccountname()) + str(
-                            request_amount) + str(accounts[selecteddstnumber].getaccountname())
+                        current_transaction_id = str(accounts[selected_number].get_username()) + str(
+                            request_amount) + str(accounts[selected_destination_number].get_username())
                         # Creates Transaction Block
-                        transaction = Transactions.Transaction(str(current_transactionid))
+                        transaction = Transactions.Transaction(str(current_transaction_id))
                         print("Approval pending...")
                         # Adds to Chain
                         transactionChain.mine(transaction)
                         # Checks if it has been added
-                        if transaction.getapproval() == 1:
+                        if transaction.get_approval() == 1:
                             print("Transaction as been approved!")
                             # Sends money
-                            accounts[selectednumber].receivemoney(accounts[selecteddstnumber].sendmoney(request_amount))
+                            accounts[selected_number].receive_money(accounts[selected_destination_number].send_money(request_amount))
                             # Checks balances
                             for i in accounts:
-                                print(str(i.getaccountname()) + ": Balance = " + str(i.getbalance()))
+                                print(str(i.get_username()) + ": Balance = " + str(i.get_balance()))
                         else:
                             print("Your transaction was not approved!")
                     else:
@@ -110,15 +110,15 @@ class Main:
         # Allows the program to continue or stop
         status = input("Is that all for this session? [Y/N] ")
         if status == "Y":
-            session_satus = True
+            session_status = True
             print("Thank you for working with New Age Banking, come back soon!")
             print("---------------------------------------")
             print("Here are your chains:")
             # Runs through/displays Sending Chain
             print("Transaction Chain: ")
-            while transactionChain.head != None:
+            while transactionChain.head is not None:
                 print(transactionChain.head)
                 transactionChain.head = transactionChain.head.next
             # Runs through/displays Request Chain
         else:
-            session_satus = False
+            session_status = False

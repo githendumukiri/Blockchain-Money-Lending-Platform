@@ -1,33 +1,33 @@
 class User:
-    amountofusers = 0
+    amount_of_users = 0
 
     def __init__(self, username, starting_balance):
         self.username = username
-        self.balace = starting_balance
-        User.amountofusers += 1
-        self.yournumberinline = User.amountofusers - 1
+        self.balance = starting_balance
+        User.amount_of_users += 1
+        self.your_number_in_line = User.amount_of_users - 1
 
-    def receivemoney(self, amount):
+    def receive_money(self, amount):
         int_amount = int(amount)
-        self.balace += int_amount
+        self.balance += int_amount
 
-    def sendmoney(self, amount):
+    def send_money(self, amount):
         int_amount = int(amount)
-        self.balace -= int_amount
+        self.balance -= int_amount
         return int_amount
 
-    def getbalance(self):
-        return self.balace
+    def get_balance(self):
+        return self.balance
 
-    def getaccountname(self):
+    def get_username(self):
         return self.username
 
-    def getlinenumber(self):
-        return self.yournumberinline
+    def get_line_number(self):
+        return self.your_number_in_line
 
     # Returns 1 if balance is good, returns 0 if there would an overdraft
-    def checkBalance(self, ammount):
-        if int(ammount) <= self.balace:
+    def check_balance(self, amount):
+        if int(amount) <= self.balance:
             return 1
         else:
             return 0

@@ -50,10 +50,10 @@ class Transaction:
         # returns a hexademical string
         return h.hexdigest()
 
-    def setapproval(self, status):
+    def set_approval(self, status):
         self.approved = status
 
-    def getapproval(self):
+    def get_approval(self):
         return self.approved
 
     def __str__(self):
@@ -105,7 +105,7 @@ class TransactionChain:
                 # if it is,
                 # add the block to the chain
                 self.add(transaction)
-                transaction.setapproval(1)
+                transaction.set_approval(1)
                 print(transaction)
                 break
             else:
